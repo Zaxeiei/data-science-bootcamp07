@@ -3,11 +3,14 @@
 library(caret)
 library(tidyverse)
 
-# 1. split data
+glimpse(mtcars)
+
+# 1. split data 80%: 20%
 set.seed(42)
-splitData <- train_test_split(mtcars, 0.7)
-train_data <- splitData[[1]]
-test_data <- splitData[[2]]]
+n <- nrow(data)
+id <- sample(1:n, size=0.8*n)
+train_data <- data[id, ]
+test_data <- data[-id, ]
 
 # 2. train
 ctrl <- trainControl(
